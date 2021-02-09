@@ -1,8 +1,14 @@
+const express = require('express');
+const app = express();
+
 let noteTitle = document.querySelector(".note-title");
 let noteText = document.querySelector(".note-textarea");
 let saveNoteBtn = document.querySelector(".save-note");
 let newNoteBtn = document.querySelector(".new-note");
 let noteList = document.querySelector(".list-group");
+
+// Specifying the PORT so as to work on Heroku, or on PORT 3000 if not on Heroku
+const PORT = process.env.PORT || 3000;
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
