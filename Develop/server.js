@@ -15,7 +15,12 @@ const noteDatabase = fs.readFile('./db/db.json', (err, data) => {
 const PORT = process.env.PORT || 3000;
 
 const handleRequest = (request, response) => {
-  
+  fs.readFile(`./public/index.html`, (err, data) => {
+    if (err) throw err;
+    
+    response.writeHead(200, { 'Content-Type': 'text/html'});
+    response.end(data);
+  })
 };
 
 const server = http.createServer(handleRequest);
