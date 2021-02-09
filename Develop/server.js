@@ -1,6 +1,8 @@
 const mysql = require('mysql');
 const fs = require('fs');
 const express = require('express');
+const http = require('http');
+const { dir } = require('console');
 const app = express();
 
 const noteDatabase = fs.readFile('./db/db.json', (err, data) => {
@@ -11,3 +13,13 @@ const noteDatabase = fs.readFile('./db/db.json', (err, data) => {
 
 // Specifying the PORT so as to work on Heroku, or on PORT 3000 if not on Heroku
 const PORT = process.env.PORT || 3000;
+
+const handleRequest = (request, response) => {
+  
+};
+
+const server = http.createServer(handleRequest);
+
+server.listen(PORT, () => {
+  console.log(`Server listening on: http://localhost:${PORT}`);
+})
