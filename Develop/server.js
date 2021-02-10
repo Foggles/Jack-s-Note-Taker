@@ -4,7 +4,7 @@ const express = require('express');
 // const http = require('http');
 const server = express();
 
-server.use(express.static('public/assets/css'));
+server.use(express.static('public'));
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
