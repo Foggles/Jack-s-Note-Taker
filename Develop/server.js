@@ -2,10 +2,13 @@ const mysql = require('mysql');
 const fs = require('fs');
 const express = require('express');
 const http = require('http');
-const app = express();
+const server = express();
+
 
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
+
+server.get('/', (request, response) => response.sendFile(`${__dirname}/public/index.html`));
 
 const noteDatabase = fs.readFile('./db/db.json', (err, data) => {
   if (err) throw err;
@@ -40,7 +43,7 @@ const PORT = process.env.PORT || 3000;
 //   }
 // }
 
-const server = http.createServer(handleRequest);
+// const server = http.createServer(handleRequest);
 
 server.listen(PORT, () => {
   console.log(`Server listening on: http://localhost:${PORT}`);
