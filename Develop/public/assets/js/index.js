@@ -1,8 +1,8 @@
-let noteTitle = document.querySelector(".note-title");
-let noteText = document.querySelector(".note-textarea");
-let saveNoteBtn = document.querySelector(".save-note");
-let newNoteBtn = document.querySelector(".new-note");
-let noteList = document.querySelector(".list-group");
+let noteTitle;
+let noteText;
+let saveNoteBtn;
+let newNoteBtn;
+let noteList;
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -149,7 +149,7 @@ const renderNoteList = async (notes) => {
     }
 
     return liEl;
-  };
+  }; 
 
   if (jsonNotes.length === 0) {
     noteListItems.push(createLi('No saved Notes', false));
@@ -163,7 +163,9 @@ const renderNoteList = async (notes) => {
   });
 
   if (window.location.pathname === '/notes') {
-    noteListItems.forEach((note) => noteList[0].append(note));
+    noteListItems.forEach((note) => {
+      noteList[0].append(note)
+    });
   }
 };
 
